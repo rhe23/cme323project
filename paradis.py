@@ -3,7 +3,7 @@ from multiprocessing import Process, Queue
 import copy
 from generate_data import *
 
-def parallelInPlaceRadixSort(data, l, k, p, start, end):
+def paradis(data, l, k, p, start, end):
 	# This optimization is done because sorting small arrays via
 	# comparison sort is quicker
 	if end - start < 10:
@@ -36,7 +36,7 @@ def parallelInPlaceRadixSort(data, l, k, p, start, end):
 		processes = []
 	 	queue = Queue()
 	 	for i in range(10):
-	 		proc = Process(target=parallelInPlaceRadixSort, args=(data, l, k, p, starts[i], ends[i]))
+	 		proc = Process(target=paradis, args=(data, l, k, p, starts[i], ends[i]))
 	 		processes.append(proc)
 	 		proc.start()
 	 	for proc in processes:
